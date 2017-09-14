@@ -103,14 +103,14 @@ bool SoilTemperatureFINPL::CheckInputData(void) {
     if (TMEAN == NULL) {
         throw ModelException(MID_STP_FP, "CheckInputData", "The parameter: mean air temperature has not been set.");
     }
-    if (TMEAN1 == NULL) {
-        throw ModelException(MID_STP_FP, "CheckInputData",
-                             "The parameter: mean air temperature of (d-1) day has not been set.");
-    }
-    if (TMEAN2 == NULL) {
-        throw ModelException(MID_STP_FP, "CheckInputData",
-                             "The parameter: mean air temperature of (d-2) day has not been set.");
-    }
+    //if (TMEAN1 == NULL) {
+    //    throw ModelException(MID_STP_FP, "CheckInputData",
+    //                         "The parameter: mean air temperature of (d-1) day has not been set.");
+    //}
+    //if (TMEAN2 == NULL) {
+    //    throw ModelException(MID_STP_FP, "CheckInputData",
+    //                         "The parameter: mean air temperature of (d-2) day has not been set.");
+    //}
     if (landuse == NULL) {
         throw ModelException(MID_STP_FP, "CheckInputData",
                              "The parameter: landuse type has not been set.");
@@ -155,10 +155,10 @@ void SoilTemperatureFINPL::Set1DData(const char *key, int n, float *data) {
         this->soil_t10 = data;
     } else if (StringMatch(sk, DataType_MeanTemperature)) {
         this->TMEAN = data;
-    } else if (StringMatch(sk, VAR_TMEAN1)) {
-        this->TMEAN1 = data;
-    } else if (StringMatch(sk, VAR_TMEAN2)) {
-        this->TMEAN2 = data;
+    //} else if (StringMatch(sk, VAR_TMEAN1)) {
+    //    this->TMEAN1 = data;
+    //} else if (StringMatch(sk, VAR_TMEAN2)) {
+    //    this->TMEAN2 = data;
     } else if (StringMatch(sk, VAR_LANDUSE)) {
         this->landuse = data;
     } else {

@@ -39,9 +39,9 @@ extern "C" SEIMS_MODULE_API const char *MetadataInformation() {
     /// mean air temperature
     mdi.AddInput(DataType_MeanTemperature, UNIT_TEMP_DEG, DESC_TMEAN, Source_Module, DT_Raster1D);
     /// mean air temperature of the day(d-1)
-    mdi.AddInput(VAR_TMEAN1, UNIT_TEMP_DEG, DESC_TMEAN1, Source_Module, DT_Raster1D);
+    //mdi.AddInput(VAR_TMEAN1, UNIT_TEMP_DEG, DESC_TMEAN1, Source_Module, DT_Raster1D);
     /// mean air temperature of the day(d-2)
-    mdi.AddInput(VAR_TMEAN2, UNIT_TEMP_DEG, DESC_TMEAN2, Source_Module, DT_Raster1D);
+    //mdi.AddInput(VAR_TMEAN2, UNIT_TEMP_DEG, DESC_TMEAN2, Source_Module, DT_Raster1D);
     /// output soil temperature
     mdi.AddOutput(VAR_SOTE, UNIT_TEMP_DEG, DESC_SOTE, DT_Raster1D);
     mdi.AddOutput(VAR_TMEAN1, UNIT_TEMP_DEG, DESC_TMEAN1, DT_Raster1D);
