@@ -1,19 +1,20 @@
 <?xml version="1.0" ?>
 <metadata version="4.0">
- <inputs>
-  <inputvariable>
+ <parameters>
+  <parameter>
    <name>numSites</name>
    <description>data row number</description>
-   <dimension>int</dimension>
+   <unit>none</unit>
+   <dimension>SINGLE</dimension>
    <source>HydroClimateDB</source>
-  </inputvariable>
- </inputs>
+  </parameter>
+ </parameters>
  <outputs>
   <outputvariable>
    <name>T</name>
    <description>time series data</description>
-   <dimension>float *</dimension>
-   <source>HydroClimateDB</source>
+   <unit>none</unit>
+   <dimension>RASTER1D</dimension>
   </outputvariable>
  </outputs>
 </metadata>

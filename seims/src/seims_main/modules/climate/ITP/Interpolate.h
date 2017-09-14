@@ -55,43 +55,66 @@ public:
 
     void CheckInputData(void);
 
-    // @In
-    // @Description count of valid cells
+    // @Parameter
+    // @Description count of valid 
+    // @Unit none
+    // @Dimension SINGLE
+    // @Source ParameterDB
     int m_nCells;
 
-    // @In
+    // @Parameter
     // @Description count of stations
+    // @Unit none
+    // @Dimension SINGLE
+    // @Source ParameterDB
     int m_nStatioins;
 
     // @In
     // @Description data of stations
+    // @Unit none
+    // @Dimension RASTER1D
+    // @Source Module
     float *T;
 
-    // @In
+    // @Parameter
     // @Description weights of each sites of all valid cells
+    // @Unit  none
+    // @Dimension ARRAY1D
+    // @Source ParameterDB
     float *WEIGHT;
 
-    // @In
+    // @Parameter
     // @Description whether using vertical interpolation
+    // @Unit none
+    // @Dimension SINGLE
+    // @Source config.fig
     bool VERTICALINTERPOLATION;
 
-    // @In
+    // @Parameter
     // @Description elevation of stations
-    // @Optional
+    // @Unit m
+    // @Dimension ARRAY1D
+    // @Source HydroClimateDB
     float *StationElevation;
 
-    // @In
+    // @Parameter
     // @Description elevation of cells
-    // @Optional
+    // @Unit m
+    // @Dimension RASTER1D
+    // @Source ParameterDB
     float *DEM;
 
-    // @In
-    // @Description Lapse Rate, a 2D array. The first level is by month, and the second level is by data type in order of (P,T,PET).
-    // @Optional
+    // @Parameter
+    // @Description Lapse Rate, a 2D array. The first level is by month, and the second level is by data type in order of (P,T,PET)
+    // @Unit /100m
+    // @Dimension ARRAY2D
+    // @Source HydroClimateDB
     float **LapseRate;
 
     // @Out
     // @Description interpolation result
+    // @Unit none
+    // @Dimension RASTER1D
     float *D;
 
 
