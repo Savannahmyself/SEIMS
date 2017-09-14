@@ -64,6 +64,9 @@ private:
     //! Load function pointers from .DLL or .so
     void ReadDLL(string &moduleID, string &dllID);
 
+	//! Read xml file as a string
+	string ReadMetadata(string &id, string &dllID);
+
     //! Get module instance by moduleID
     SimulationModule *GetInstance(string &moduleID) { return m_instanceFuncs[moduleID](); }
 

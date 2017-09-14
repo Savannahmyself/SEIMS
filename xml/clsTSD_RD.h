@@ -20,12 +20,14 @@ using namespace std;
  */
 class clsTSD_RD : public SimulationModule {
 public:
-    // @In
+	// @In
     // @Description data row number
+	// @Source HydroClimateDB
     int numSites;
 
-    // @Out
+	// @Out
     // @Description time series data
+	// @Source HydroClimateDB
     float *T;
 
     clsTSD_RD(void);

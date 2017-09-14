@@ -280,6 +280,12 @@ public:
      */
     static bool StringMatch(string const &text1, string const &text2);
 
+	/*!
+	* \brief read a text file and store the data into a string
+	* \param[in] filename
+	* \return string
+	*/
+	static string ReadFileIntoString(const char * filename);
     /*!
      * \brief Trim Both leading and trailing spaces
      * \sa trim

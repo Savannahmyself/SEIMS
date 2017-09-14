@@ -40,15 +40,6 @@ ModuleFactory::~ModuleFactory(void) {
     }
     m_settings.clear();
 
-    StatusMessage("---release map of metadata of modules ...");
-    for (map<string, const char *>::iterator it = m_metadata.begin(); it != m_metadata.end();) {
-        if (it->second != NULL) {
-            StatusMessage(("-----" + it->first + " ...").c_str());
-            delete it->second;
-            it->second = NULL;
-        }
-        m_metadata.erase(it++);
-    }
     m_metadata.clear();
 
     StatusMessage("---release dynamic library handles ...");
@@ -99,9 +90,14 @@ void ModuleFactory::Init(const string &configFileName) {
         ReadDLL(id, dllID);
 
         // load metadata
-        MetadataFunction metadataInfo = m_metadataFuncs[id];
-        const char *metadata = metadataInfo();
-        m_metadata[id] = metadata;
+        //MetadataFunction metadataInfo = m_metadataFuncs[id];
+        //const char *metadata = metadataInfo();
+		string xmlfile = trim(m_modulePath) + SEP + string(dllID) + ".xml";
+		string strMetadata = utilsString::ReadFileIntoString(xmlfile.c_str());
+		const char* metadata = strMetadata.c_str();
+
+        m_metadata[id] = metadata;//metadata will be deleted outside this function
+		
         // parse the metadata
         TiXmlDocument doc;
         doc.Parse(metadata);
@@ -121,7 +117,7 @@ void ModuleFactory::Init(const string &configFileName) {
             ParamInfo &param = inputs[j];
             if (StringMatch(param.Source, Source_Module) || StringMatch(param.Source, Source_Module_Optional)) {
                 param.DependPara = FindDependentParam(param);
-                //cout << "\t" << param.Name << "\t" << param.DependPara->ModuleID << ":" << param.DependPara->Name << endl;
+                cout << "\t" << param.Name << "\t" << param.DependPara->ModuleID << ":" << param.DependPara->Name << endl;
             } else {
                 continue;
             }
@@ -211,6 +207,7 @@ ParamInfo *ModuleFactory::FindDependentParam(ParamInfo &paramInfo) {
     }
     return NULL;
 }
+
 
 void ModuleFactory::ReadDLL(string &id, string &dllID) {
     // the dll file is already read, return
@@ -369,12 +366,12 @@ void ModuleFactory::ReadParameterSetting(string &moduleID, TiXmlDocument &doc, S
             }
 
             // get the parameter dimension
-            elItm = eleParam->FirstChildElement(TagParameterDimension.c_str());
-            if (elItm != NULL) {
-                if (elItm->GetText() != NULL) {
-                    param->Dimension = MatchType(string(elItm->GetText()));
-                }
-            }
+            //elItm = eleParam->FirstChildElement(TagParameterDimension.c_str());
+            //if (elItm != NULL) {
+            //    if (elItm->GetText() != NULL) {
+            //        param->Dimension = MatchType(string(elItm->GetText()));
+            //    }
+            //}
 
             // cleanup
             elItm = NULL;
@@ -386,19 +383,19 @@ void ModuleFactory::ReadParameterSetting(string &moduleID, TiXmlDocument &doc, S
                                      "Some parameters have not name in metadata!");
             }
 
-            if (param->Source.size() <= 0) {
-                string name = param->Name;
-                delete param;
-                throw ModelException("ModuleFactory", "ReadParameterSetting",
-                                     "parameter " + name + " does not have source!");
-            }
+            //if (param->Source.size() <= 0) {
+            //    string name = param->Name;
+            //    delete param;
+            //    throw ModelException("ModuleFactory", "ReadParameterSetting",
+            //                         "parameter " + name + " does not have source!");
+            //}
 
-            if (param->Dimension == DT_Unknown) {
-                string name = param->Name;
-                delete param;
-                throw ModelException("ModuleFactory", "ReadParameterSetting",
-                                     "parameter " + name + " does not have dimension!");
-            }
+            //if (param->Dimension == DT_Unknown) {
+            //    string name = param->Name;
+            //    delete param;
+            //    throw ModelException("ModuleFactory", "ReadParameterSetting",
+            //                         "parameter " + name + " does not have dimension!");
+            //}
 
             // add to the list
             //m_paramters[GetUpper(param->Name)] = param;
@@ -474,14 +471,6 @@ void ModuleFactory::ReadInputSetting(string &moduleID, TiXmlDocument &doc, SEIMS
                 }
             }
 
-            // get the input variable dimension
-            elItm = elInput->FirstChildElement(TagInputVariableDimension.c_str());
-            if (elItm != NULL) {
-                if (elItm->GetText() != NULL) {
-                    param->Dimension = MatchType(string(elItm->GetText()));
-                }
-            }
-
             elItm = NULL;
 
             // input must have these values
@@ -489,20 +478,6 @@ void ModuleFactory::ReadInputSetting(string &moduleID, TiXmlDocument &doc, SEIMS
                 delete param;
                 throw ModelException("SEIMSModule", "ReadInputSetting",
                                      "Some input variables have not name in metadata!");
-            }
-
-            if (param->Source.size() <= 0) {
-                string name = param->Name;
-                delete param;
-                throw ModelException("SEIMSModule", "ReadInputSetting",
-                                     "Input variable " + name + " does not have source!");
-            }
-
-            if (param->Dimension == DT_Unknown) {
-                string name = param->Name;
-                delete param;
-                throw ModelException("SEIMSModule", "ReadInputSetting",
-                                     "Input variable " + name + " does not have dimension!");
             }
 
             vecPara.push_back(*param);
@@ -559,14 +534,6 @@ void ModuleFactory::ReadOutputSetting(string &moduleID, TiXmlDocument &doc, SEIM
 
             param->Source = "";
 
-            // get the output variable dimension
-            elItm = elOutput->FirstChildElement(TagOutputVariableDimension.c_str());
-            if (elItm != NULL) {
-                if (elItm->GetText() != NULL) {
-                    param->Dimension = MatchType(string(elItm->GetText()));
-                }
-            }
-
             elItm = NULL;
 
             // add to the list
@@ -577,13 +544,6 @@ void ModuleFactory::ReadOutputSetting(string &moduleID, TiXmlDocument &doc, SEIM
                 delete param;
                 throw ModelException("SEIMSModule", "readOutputSetting",
                                      "Some output variables have not name in metadata!");
-            }
-
-            if (param->Dimension == DT_Unknown) {
-                string name = param->Name;
-                delete param;
-                throw ModelException("SEIMSModule", "readInputSetting",
-                                     "Input variable " + name + " does not have dimension!");
             }
 
             vecPara.push_back(*param);

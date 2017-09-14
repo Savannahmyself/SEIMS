@@ -1,52 +1,52 @@
 <?xml version="1.0" ?>
 <metadata version="4.0">
  <inputs>
-  <input>
+  <inputvariable>
    <name>m_nCells</name>
    <description>// @Description count of valid cells</description>
    <dimension>int</dimension>
-  </input>
-  <input>
+  </inputvariable>
+  <inputvariable>
    <name>m_nStatioins</name>
    <description>// @Description count of stations</description>
    <dimension>int</dimension>
-  </input>
-  <input>
+  </inputvariable>
+  <inputvariable>
    <name>T</name>
    <description>// @Description data of stations</description>
    <dimension>float *</dimension>
-  </input>
-  <input>
+  </inputvariable>
+  <inputvariable>
    <name>WEIGHT</name>
    <description>// @Description weights of each sites of all valid cells</description>
    <dimension>float *</dimension>
-  </input>
-  <input>
+  </inputvariable>
+  <inputvariable>
    <name>VERTICALINTERPOLATION</name>
    <description>// @Description whether using vertical interpolation</description>
    <dimension>bool</dimension>
-  </input>
-  <input>
+  </inputvariable>
+  <inputvariable>
    <name>StationElevation</name>
    <description>// @Description elevation of stations</description>
    <dimension>float *</dimension>
-  </input>
-  <input>
+  </inputvariable>
+  <inputvariable>
    <name>DEM</name>
    <description>// @Description elevation of cells</description>
    <dimension>float *</dimension>
-  </input>
-  <input>
+  </inputvariable>
+  <inputvariable>
    <name>LapseRate</name>
    <description>// @Description Lapse Rate, a 2D array. The first level is by month, and the second level is by data type in order of (P,T,PET).</description>
    <dimension>float **</dimension>
-  </input>
+  </inputvariable>
  </inputs>
  <outputs>
-  <output>
+  <outputvariable>
    <name>D</name>
    <description>// @Description interpolation result</description>
    <dimension>float *</dimension>
-  </output>
+  </outputvariable>
  </outputs>
 </metadata>

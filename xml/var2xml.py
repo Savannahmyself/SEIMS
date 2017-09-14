@@ -15,6 +15,7 @@ def readFileToDict(filename):
     var_description = []
     var_unit = []
     var_dimension = []
+    var_source = []
 
     text = ["@In","@Out","@parameter"]
 
@@ -30,11 +31,16 @@ def readFileToDict(filename):
 
         if bool > 0:
             str_des = linecache.getline(filename, (line_num + 1)).strip()
-            str_var = linecache.getline(filename, (line_num + 2)).strip()
+            str_var = linecache.getline(filename, (line_num + 3)).strip()
             type = re.split('@|\n', line)
-            des = str_des.replace('    // @Description ','').replace('\n','')
+            des = str_des.replace('// @Description ','').replace('\n','')
             name = str_var.replace("*", "").replace(";", "").replace(",", "").split()
             dimension = str_var.replace(";","").replace(",","").split()
+
+            str_source = linecache.getline(filename, (line_num + 2)).strip()
+            print (str_source)
+            source = str_source.replace('// @Source ','').replace('\n','')
+            print (source)
 
             dim = dimension[0]
             for i in range(1,len(name)):
@@ -46,6 +52,7 @@ def readFileToDict(filename):
                 var_description.append(des)
                 var_type.append(type[1])
                 var_name.append(name[i])
+                var_source.append(source)
         line_num += 1
         line = file.readline()
 
@@ -55,6 +62,7 @@ def readFileToDict(filename):
         var_dic["name"] = var_name[i]
         var_dic["description"] = var_description[i]
         var_dic["dimension"] = var_dimension[i]
+        var_dic["source"] = var_source[i]
     # print var_dic
         var.append(var_dic)
     # print var
@@ -88,7 +96,7 @@ def createXML(xml_name,var):
     for i in range(len(var)):
         var_dic = var[i]
         if (var_dic["type"] == "in"):
-            inputvar = doc.createElement('input')
+            inputvar = doc.createElement('inputvariables')
             inputs.appendChild(inputvar)
 
             name = doc.createElement("name")
@@ -99,10 +107,13 @@ def createXML(xml_name,var):
             # unit.appendChild(doc.createTextNode(var_dic["unit"]))
             dimension = doc.createElement("dimension")
             dimension.appendChild(doc.createTextNode(var_dic["dimension"]))
+            source = doc.createElement("source")
+            source.appendChild(doc.createTextNode(var_dic["source"]))
             inputvar.appendChild(name)
             inputvar.appendChild(description)
             # inputvar.appendChild(unit)
             inputvar.appendChild(dimension)
+            inputvar.appendChild(source)
 
         if (var_dic["type"] == "parameter"):
             parameter = doc.createElement('parameter')
@@ -116,13 +127,16 @@ def createXML(xml_name,var):
             # unit.appendChild(doc.createTextNode(var_dic["unit"]))
             dimension = doc.createElement("dimension")
             dimension.appendChild(doc.createTextNode(var_dic["dimension"]))
+            source = doc.createElement("source")
+            source.appendChild(doc.createTextNode(var_dic["source"]))
             parameter.appendChild(name)
             parameter.appendChild(description)
             # parameter.appendChild(unit)
             parameter.appendChild(dimension)
+            parameter.appendChild(source)
 
         if (var_dic["type"] == "out"):
-            outputvar = doc.createElement('output')
+            outputvar = doc.createElement('outputvariables')
             outputs.appendChild(outputvar)
 
             name = doc.createElement("name")
@@ -133,10 +147,13 @@ def createXML(xml_name,var):
             # unit.appendChild(doc.createTextNode(var_dic["unit"]))
             dimension = doc.createElement("dimension")
             dimension.appendChild(doc.createTextNode(var_dic["dimension"]))
+            source = doc.createElement("source")
+            source.appendChild(doc.createTextNode(var_dic["source"]))
             outputvar.appendChild(name)
             outputvar.appendChild(description)
             # outputvar.appendChild(unit)
             outputvar.appendChild(dimension)
+            outputvar.appendChild(source)
 
     # print doc.toprettyxml(indent=" ")
 
@@ -146,8 +163,8 @@ def createXML(xml_name,var):
 
 if __name__ == '__main__':
 
-    filelist = ["SoilTemperatureFINPL.h", "Interpolate.h", "clsTSD_RD.h"]
-    xml_namelist = ["STP_FP", "ITP", "TSD_RD"]
+    filelist = ["clsTSD_RD.h"]
+    xml_namelist = ["TSD_RD"]
     
     n = len(filelist)
     for i in range(n):

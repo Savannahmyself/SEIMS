@@ -1,87 +1,87 @@
 <?xml version="1.0" ?>
 <metadata version="4.0">
  <inputs>
-  <input>
+  <inputvariable>
    <name>soil_ta0</name>
    <description>// @Description coefficients in the Equation</description>
    <dimension>float</dimension>
-  </input>
-  <input>
+  </inputvariable>
+  <inputvariable>
    <name>soil_ta1</name>
    <description>// @Description coefficients in the Equation</description>
    <dimension>float</dimension>
-  </input>
-  <input>
+  </inputvariable>
+  <inputvariable>
    <name>soil_ta2</name>
    <description>// @Description coefficients in the Equation</description>
    <dimension>float</dimension>
-  </input>
-  <input>
+  </inputvariable>
+  <inputvariable>
    <name>soil_ta3</name>
    <description>// @Description coefficients in the Equation</description>
    <dimension>float</dimension>
-  </input>
-  <input>
+  </inputvariable>
+  <inputvariable>
    <name>soil_tb1</name>
    <description>// @Description coefficients in the Equation</description>
    <dimension>float</dimension>
-  </input>
-  <input>
+  </inputvariable>
+  <inputvariable>
    <name>soil_tb2</name>
    <description>// @Description coefficients in the Equation</description>
    <dimension>float</dimension>
-  </input>
-  <input>
+  </inputvariable>
+  <inputvariable>
    <name>soil_td1</name>
    <description>// @Description coefficients in the Equation</description>
    <dimension>float</dimension>
-  </input>
-  <input>
+  </inputvariable>
+  <inputvariable>
    <name>soil_td2</name>
    <description>// @Description coefficients in the Equation</description>
    <dimension>float</dimension>
-  </input>
-  <input>
+  </inputvariable>
+  <inputvariable>
    <name>k_soil10</name>
    <description>// @Description ratio between soil temperature at 10 cm and the mean</description>
    <dimension>float</dimension>
-  </input>
-  <input>
+  </inputvariable>
+  <inputvariable>
    <name>m_nCells</name>
    <description>// @Description count of cells</description>
    <dimension>int</dimension>
-  </input>
-  <input>
+  </inputvariable>
+  <inputvariable>
    <name>soil_t10</name>
    <description>// @Description factor of soil temperature relative to short grass (degree)</description>
    <dimension>float *</dimension>
-  </input>
-  <input>
+  </inputvariable>
+  <inputvariable>
    <name>landuse</name>
    <description>// @Description landuse type, for distinguish calculation, such as water body.</description>
    <dimension>float *</dimension>
-  </input>
-  <input>
+  </inputvariable>
+  <inputvariable>
    <name>TMEAN</name>
    <description>// @Description mean air temperature of the current day</description>
    <dimension>float *</dimension>
-  </input>
+  </inputvariable>
  </inputs>
  <outputs>
-  <output>
+  <outputvariable>
    <name>TMEAN1</name>
    <description>// @Description mean air temperature of the day(d-1)</description>
    <dimension>float *</dimension>
-  </output>
-  <output>
+  </outputvariable>
+  <outputvariable>
    <name>TMEAN2</name>
    <description>// @Description mean air temperature of the day(d-2)</description>
    <dimension>float *</dimension>
-  </output>
-  <output>
+  </outputvariable>
+  <outputvariable>
    <name>SOTE</name>
-   <description>// @Description output soil temperature</description>
+   <description>// @Description outputvariable soil temperature</description>
    <dimension>float *</dimension>
-  </output>
+  </outputvariable>
  </outputs>
 </metadata>

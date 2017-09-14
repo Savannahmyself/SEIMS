@@ -4,16 +4,16 @@
 using namespace std;
 
 clsTSD_RD::clsTSD_RD(void) {
-    this->m_Rows = -1;
-    this->m_Data = NULL;
+    this->numSites = -1;
+    this->T = NULL;
 }
 
 clsTSD_RD::~clsTSD_RD(void) {
 }
 
 void clsTSD_RD::Set1DData(const char *key, int n, float *data) {
-    this->m_Rows = n;
-    this->m_Data = data;
+    this->numSites = n;
+    this->T = data;
     /// Test Code of Reading time series data
     //cout<<"TSD_RD, SetData: ";
     //for (int i = 0; i < n; i++)
@@ -24,13 +24,13 @@ void clsTSD_RD::Set1DData(const char *key, int n, float *data) {
 
 void clsTSD_RD::Get1DData(const char *key, int *n, float **data) {
     string sk(key);
-    if (this->m_Rows == -1 || this->m_Data == NULL) {
+    if (this->numSites == -1 || this->T == NULL) {
         throw ModelException(MID_TSD_RD, "GetData", "The data " + string(key) + " is NULL.");
     }
-    *data = this->m_Data;
-    *n = this->m_Rows;
+    *data = this->T;
+    *n = this->numSites;
     //cout<<"TSD_RD, GetData: ";
-    //for(int i = 0; i < m_Rows; i++)
-    //	cout << m_Data[i]<<",";
+    //for(int i = 0; i < numSites; i++)
+    //	cout << T[i]<<",";
     //cout<<endl;
 }

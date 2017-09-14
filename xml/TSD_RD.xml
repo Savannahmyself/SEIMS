@@ -1,17 +1,19 @@
 <?xml version="1.0" ?>
 <metadata version="4.0">
  <inputs>
-  <input>
+  <inputvariable>
    <name>numSites</name>
-   <description>// @Description data row number</description>
+   <description>data row number</description>
    <dimension>int</dimension>
-  </input>
+   <source>HydroClimateDB</source>
+  </inputvariable>
  </inputs>
  <outputs>
-  <output>
+  <outputvariable>
    <name>T</name>
-   <description>// @Description time series data</description>
+   <description>time series data</description>
    <dimension>float *</dimension>
-  </output>
+   <source>HydroClimateDB</source>
+  </outputvariable>
  </outputs>
 </metadata>
