@@ -6,7 +6,6 @@ using namespace std;
 clsTSD_RD::clsTSD_RD(void) {
     this->m_Rows = -1;
     this->m_Data = NULL;
-    this->counter = 1;
 }
 
 clsTSD_RD::~clsTSD_RD(void) {

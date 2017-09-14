@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<metadata version="4.0">
+ <inputs>
+  <input>
+   <name>numSites</name>
+   <description>// @Description data row number</description>
+   <dimension>int</dimension>
+  </input>
+ </inputs>
+ <outputs>
+  <output>
+   <name>T</name>
+   <description>// @Description time series data</description>
+   <dimension>float *</dimension>
+  </output>
+ </outputs>
+</metadata>

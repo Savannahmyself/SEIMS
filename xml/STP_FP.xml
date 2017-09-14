@@ -2,87 +2,85 @@
 <metadata version="4.0">
  <inputs>
   <input>
+   <name>soil_ta0</name>
+   <description>// @Description coefficients in the Equation</description>
+   <dimension>float</dimension>
+  </input>
+  <input>
+   <name>soil_ta1</name>
+   <description>// @Description coefficients in the Equation</description>
+   <dimension>float</dimension>
+  </input>
+  <input>
+   <name>soil_ta2</name>
+   <description>// @Description coefficients in the Equation</description>
+   <dimension>float</dimension>
+  </input>
+  <input>
+   <name>soil_ta3</name>
+   <description>// @Description coefficients in the Equation</description>
+   <dimension>float</dimension>
+  </input>
+  <input>
+   <name>soil_tb1</name>
+   <description>// @Description coefficients in the Equation</description>
+   <dimension>float</dimension>
+  </input>
+  <input>
+   <name>soil_tb2</name>
+   <description>// @Description coefficients in the Equation</description>
+   <dimension>float</dimension>
+  </input>
+  <input>
+   <name>soil_td1</name>
+   <description>// @Description coefficients in the Equation</description>
+   <dimension>float</dimension>
+  </input>
+  <input>
+   <name>soil_td2</name>
+   <description>// @Description coefficients in the Equation</description>
+   <dimension>float</dimension>
+  </input>
+  <input>
+   <name>k_soil10</name>
+   <description>// @Description ratio between soil temperature at 10 cm and the mean</description>
+   <dimension>float</dimension>
+  </input>
+  <input>
+   <name>m_nCells</name>
+   <description>// @Description count of cells</description>
+   <dimension>int</dimension>
+  </input>
+  <input>
+   <name>soil_t10</name>
+   <description>// @Description factor of soil temperature relative to short grass (degree)</description>
+   <dimension>float *</dimension>
+  </input>
+  <input>
+   <name>landuse</name>
+   <description>// @Description landuse type, for distinguish calculation, such as water body.</description>
+   <dimension>float *</dimension>
+  </input>
+  <input>
    <name>TMEAN</name>
-   <description>mean air temperature of the current day</description>
+   <description>// @Description mean air temperature of the current day</description>
    <dimension>float *</dimension>
   </input>
  </inputs>
- <parameters>
-  <parameter>
-   <name>soil_ta0</name>
-   <description>coefficients in the Equation</description>
-   <dimension>float</dimension>
-  </parameter>
-  <parameter>
-   <name>soil_ta1</name>
-   <description>coefficients in the Equation</description>
-   <dimension>float</dimension>
-  </parameter>
-  <parameter>
-   <name>soil_ta2</name>
-   <description>coefficients in the Equation</description>
-   <dimension>float</dimension>
-  </parameter>
-  <parameter>
-   <name>soil_ta3</name>
-   <description>coefficients in the Equation</description>
-   <dimension>float</dimension>
-  </parameter>
-  <parameter>
-   <name>soil_tb1</name>
-   <description>coefficients in the Equation</description>
-   <dimension>float</dimension>
-  </parameter>
-  <parameter>
-   <name>soil_tb2</name>
-   <description>coefficients in the Equation</description>
-   <dimension>float</dimension>
-  </parameter>
-  <parameter>
-   <name>soil_td1</name>
-   <description>coefficients in the Equation</description>
-   <dimension>float</dimension>
-  </parameter>
-  <parameter>
-   <name>soil_td2</name>
-   <description>coefficients in the Equation</description>
-   <dimension>float</dimension>
-  </parameter>
-  <parameter>
-   <name>k_soil10</name>
-   <description>ratio between soil temperature at 10 cm and the mean</description>
-   <dimension>float</dimension>
-  </parameter>
-  <parameter>
-   <name>m_nCells</name>
-   <description>count of cells</description>
-   <dimension>int</dimension>
-  </parameter>
-  <parameter>
-   <name>soil_t10</name>
-   <description>factor of soil temperature relative to short grass (degree)</description>
-   <dimension>float *</dimension>
-  </parameter>
-  <parameter>
-   <name>landuse</name>
-   <description>landuse type, for distinguish calculation, such as water body.</description>
-   <dimension>float *</dimension>
-  </parameter>
- </parameters>
  <outputs>
   <output>
    <name>TMEAN1</name>
-   <description>mean air temperature of the day(d-1)</description>
+   <description>// @Description mean air temperature of the day(d-1)</description>
    <dimension>float *</dimension>
   </output>
   <output>
    <name>TMEAN2</name>
-   <description>mean air temperature of the day(d-2)</description>
+   <description>// @Description mean air temperature of the day(d-2)</description>
    <dimension>float *</dimension>
   </output>
   <output>
    <name>SOTE</name>
-   <description>output soil temperature</description>
+   <description>// @Description output soil temperature</description>
    <dimension>float *</dimension>
   </output>
  </outputs>

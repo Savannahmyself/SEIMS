@@ -2,52 +2,50 @@
 <metadata version="4.0">
  <inputs>
   <input>
+   <name>m_nCells</name>
+   <description>// @Description count of valid cells</description>
+   <dimension>int</dimension>
+  </input>
+  <input>
+   <name>m_nStatioins</name>
+   <description>// @Description count of stations</description>
+   <dimension>int</dimension>
+  </input>
+  <input>
    <name>T</name>
-   <description>data of stations</description>
+   <description>// @Description data of stations</description>
    <dimension>float *</dimension>
   </input>
- </inputs>
- <parameters>
-  <parameter>
-   <name>m_nCells</name>
-   <description>count of valid cells</description>
-   <dimension>int</dimension>
-  </parameter>
-  <parameter>
-   <name>m_nStatioins</name>
-   <description>count of stations</description>
-   <dimension>int</dimension>
-  </parameter>
-  <parameter>
+  <input>
    <name>WEIGHT</name>
-   <description>weights of each sites of all valid cells</description>
+   <description>// @Description weights of each sites of all valid cells</description>
    <dimension>float *</dimension>
-  </parameter>
-  <parameter>
+  </input>
+  <input>
    <name>VERTICALINTERPOLATION</name>
-   <description>whether using vertical interpolation</description>
+   <description>// @Description whether using vertical interpolation</description>
    <dimension>bool</dimension>
-  </parameter>
-  <parameter>
+  </input>
+  <input>
    <name>StationElevation</name>
-   <description>elevation of stations</description>
+   <description>// @Description elevation of stations</description>
    <dimension>float *</dimension>
-  </parameter>
-  <parameter>
+  </input>
+  <input>
    <name>DEM</name>
-   <description>elevation of cells</description>
+   <description>// @Description elevation of cells</description>
    <dimension>float *</dimension>
-  </parameter>
-  <parameter>
+  </input>
+  <input>
    <name>LapseRate</name>
-   <description>Lapse Rate, a 2D array. The first level is by month, and the second level is by data type in order of (P,T,PET).</description>
+   <description>// @Description Lapse Rate, a 2D array. The first level is by month, and the second level is by data type in order of (P,T,PET).</description>
    <dimension>float **</dimension>
-  </parameter>
- </parameters>
+  </input>
+ </inputs>
  <outputs>
   <output>
    <name>D</name>
-   <description>interpolation result</description>
+   <description>// @Description interpolation result</description>
    <dimension>float *</dimension>
   </output>
  </outputs>
