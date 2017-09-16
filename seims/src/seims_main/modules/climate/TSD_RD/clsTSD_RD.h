@@ -43,3 +43,4 @@ public:
     void Get1DData(const char *key, int *n, float **data);
 };
 
+VISITABLE_STRUCT(clsTSD_RD, numSites, T)

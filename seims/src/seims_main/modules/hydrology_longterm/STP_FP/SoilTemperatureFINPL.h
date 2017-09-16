@@ -107,10 +107,10 @@ public:
     float *SOTE;
 
 private:
+
     // Julian day
     int julianDay;
 
-private:
 	/// temporary variable
 	float w;
     /*!
@@ -136,5 +136,5 @@ private:
     bool CheckInputSize(const char *, int);
 };
 
-VISITABLE_STRUCT(SoilTemperatureFINPL, w, m_nCells, soil_ta0, soil_ta1, soil_ta2, soil_ta3, soil_tb1, soil_tb2, soil_td1, soil_td2,
+VISITABLE_STRUCT(SoilTemperatureFINPL, m_nCells, soil_ta0, soil_ta1, soil_ta2, soil_ta3, soil_tb1, soil_tb2, soil_td1, soil_td2,
 	k_soil10, soil_t10, landuse, TMEAN, TMEAN1, TMEAN2, SOTE);
